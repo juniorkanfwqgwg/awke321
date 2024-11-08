@@ -1,79 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MindAR AR Scanner</title>
-  <script src="https://cdn.jsdelivr.net/gh/MindAR-js/aframe/dist/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/MindAR-js/aframe/dist/aframe-mindar.js"></script>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #000;
-    }
-    #screenshot-button {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <a-scene mindar-image="imageTargetSrc: ./path-to-your-targets.mind; autoStart: true;" embedded>
-    <a-camera position="0 0 0" look-controls></a-camera>
 
-    <!-- Target 1 -->
-    <a-entity mindar-image-target="targetIndex: 0">
-      <a-box color="red" depth="0.1" height="0.3" width="0.3" position="0 0 0"></a-box>
-    </a-entity>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
+        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+      </a-assets>
 
-    <!-- Target 2 -->
-    <a-entity mindar-image-target="targetIndex: 1">
-      <a-sphere color="blue" radius="0.15" position="0 0 0"></a-sphere>
-    </a-entity>
 
-    <!-- Target 3 -->
-    <a-entity mindar-image-target="targetIndex: 2">
-      <a-cylinder color="green" height="0.3" radius="0.15" position="0 0 0"></a-cylinder>
-    </a-entity>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-    <!-- Target 4 -->
-    <a-entity mindar-image-target="targetIndex: 3">
-      <a-plane color="yellow" height="0.3" width="0.3" position="0 0 0"></a-plane>
-    </a-entity>
 
-    <!-- Target 5 -->
-    <a-entity mindar-image-target="targetIndex: 4">
-      <a-torus color="purple" radius="0.15" radius-tubular="0.05" position="0 0 0"></a-torus>
-    </a-entity>
-  </a-scene>
-
-  <button id="screenshot-button">Take Screenshot</button>
-
-  <script>
-    document.getElementById("screenshot-button").addEventListener("click", () => {
-      const scene = document.querySelector("a-scene");
-      scene.components.screenshot.capture("perspective");
-      const screenshot = scene.components.screenshot.getCanvas("perspective");
-      const link = document.createElement("a");
-      link.href = screenshot.toDataURL("image/png");
-      link.download = "screenshot.png";
-      link.click();
-    });
-  </script>
-</body>
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+      </a-entity>
+    </a-scene>
+  </body>
 </html>
