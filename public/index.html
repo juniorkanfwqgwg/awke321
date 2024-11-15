@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +47,35 @@
             height: auto;
         }
 
+=======
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
+        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+      </a-assets>
+
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+<<<<<<< HEAD:index.html
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
+=======
+>>>>>>> 24124625950471440aff0a84851e4629eb0b35dc
         /* หน้าใหม่ (หน้า 2) */
         .background-new {
             display: none;
@@ -238,6 +268,7 @@
     </style>
 
     <!-- Firebase SDK -->
+<<<<<<< HEAD
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
@@ -255,6 +286,89 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
     </script>
+=======
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js"></script>
+    
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC0o6yhCvX9EvfF1GVkJUsKBSaO6vvXFHo",
+            authDomain: "ar-awkn2024-cde.firebaseapp.com",
+            databaseURL: "ar-awkn2024-cde",
+            projectId: "ar-awkn2024-cde.firebasestorage.app",
+            storageBucket: "958609080092",
+            messagingSenderId: "1:958609080092:web:503c39e9146aa825d1c4d9",
+            appId: "G-7BCME79FP7"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Function to send selected sticker data to Firebase
+        function sendStickerData(stickerUrl) {
+            database.ref('stickers').push({
+                stickerUrl: stickerUrl,
+                timestamp: new Date().toISOString()
+            }).then(() => {
+                alert("Sticker sent to Firebase!");
+            }).catch(error => {
+                console.error("Error sending sticker: ", error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- หน้าแรก -->
+    <div class="background" id="background" onclick="goToNextPage()">
+        <div class="logo">
+            <img src="https://cdn.jsdelivr.net/gh/juniorkanfwqgwg/AWKECDE321@0355cfaddfc79ff37235fd0030209907f17fb241/AWKENING%20LOGO.png" alt="Awakening Bangkok Logo">
+        </div>
+    </div>
+
+    <!-- หน้าใหม่ (หน้า 2) -->
+    <div class="background-new" id="backgroundNew">
+        <div class="logo-new">
+            <img src="https://cdn.jsdelivr.net/gh/juniorkanfwqgwg/AWKECDE321@70df8898b0a66e54925b81f87192830d7d8ee950/1_1%20EP.1%20No%20bg%20_0.png" alt="Logo">
+        </div>
+        <div class="sticker" id="sticker" onclick="showCarousel()">
+            <img src="https://cdn.jsdelivr.net/gh/juniorkanfwqgwg/AWKECDE321@752723f272394a9899c94d7653819849ebecc3ce/STRIKER.png" alt="Sticker Button">
+        </div>
+        <div class="google-link" id="googleLink" onclick="goToGoogle()">
+            <img src="https://cdn.jsdelivr.net/gh/juniorkanfwqgwg/AWKECDE321@752723f272394a9899c94d7653819849ebecc3ce/AR.png" alt="Google Link">
+        </div>
+    </div>
+
+    <!-- หน้า Interactive Carousel -->
+    <div class="container" id="carouselContainer">
+        <div class="back-button" onclick="goBack()"></div>
+        
+        <!-- พื้นที่แสดง Preview -->
+        <div class="preview-area">
+            <img id="previewImage" src="https://via.placeholder.com/150" alt="Preview" />
+        </div>
+
+        <!-- พื้นที่เลื่อนกรอบ -->
+        <div class="carousel-grid-wrapper" id="carouselGridWrapper">
+            <div class="carousel-grid">
+                <!-- กรอบทั้ง 14 อัน -->
+                <div class="grid-item" style="background-image: url('https://cdn.jsdelivr.net/gh/juniorkanfwqgwg/AWKECDE321@9f25f410e969edd8cf2a6c25a773008e6b6baaf3/Stickers-2/Untitled_Artwork%20(1).png');" onclick="showPreview('https://cdn.jsdelivr.net/gh/juniorkanfwqgwg/AWKECDE321@9f25f410e969edd8cf2a6c25a773008e6b6baaf3/Stickers-2/Untitled_Artwork%20(1).png')"></div>
+                <div class="grid-item" style="background-image: url('https://cdn.jsdelivr.net/gh/juniorkanfwqgwg/AWKECDE321@9f25f410e969edd8cf2a6c25a773008e6b6baaf3/Stickers-2/Untitled_Artwork%201%20(1).png');" onclick="showPreview('https://cdn.jsdelivr.net/gh/juniorkanfwqgwg/AWKECDE321@9f25f410e969edd8cf2a6c25a773008e6b6baaf3/Stickers-2/Untitled_Artwork%201%20(1).png')"></div>
+                <!-- เพิ่มกรอบอื่น ๆ ที่เหลือให้ครบ 14 อัน -->
+            </div>
+        </div>
+
+        <div class="confirm-button" onclick="confirmSelection()">CONFIRM</div>
+    </div>
+
+    <!-- หน้า Preview หลังจากกด Confirm -->
+    <div class="preview-container" id="previewContainer">
+        <div class="back-button" onclick="goBackToCarousel()"></div>
+        <div class="preview-selected" id="selectedPreview"></div>
+        <div class="send-button">SEND STICKER!</div>
+    </div>
+>>>>>>> 24124625950471440aff0a84851e4629eb0b35dc
 
     <script>
         let selectedSticker = "";
@@ -295,6 +409,7 @@
             document.getElementById("carouselContainer").style.display = "flex";
         }
 
+<<<<<<< HEAD
         // ฟังก์ชันส่งข้อมูลสติกเกอร์ไปยังระบบหลังบ้าน
         function sendStickerData(stickerUrl) {
             fetch('https://your-backend-url.com/api/upload-sticker', { // เปลี่ยน URL เป็นของ backend ของคุณ
@@ -316,6 +431,9 @@
         }
 
         // Event listener for sending sticker to backend when "SEND STICKER!" button is clicked
+=======
+        // Event listener for sending sticker to Firebase when "SEND STICKER!" button is clicked
+>>>>>>> 24124625950471440aff0a84851e4629eb0b35dc
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelector(".send-button").addEventListener("click", () => {
                 if (selectedSticker) {
@@ -326,6 +444,7 @@
             });
         });
     </script>
+<<<<<<< HEAD
 </head>
 <body>
     <!-- หน้าแรก -->
@@ -388,3 +507,8 @@
     </div>
 </body>
 </html>
+=======
+</body>
+</html>
+>>>>>>> 6ebfb0e (add new image):public/index.html
+>>>>>>> 24124625950471440aff0a84851e4629eb0b35dc
