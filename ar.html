@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แอป AR Image Tracking</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs>
+        
+        <!-- ตัวติดตาม (marker) สำหรับแต่ละเป้าหมาย -->
+        <a-marker preset="custom" type="nft" url="./assets/target1">
+            <!-- โมเดลหรือภาพเคลื่อนไหว 3D สำหรับเป้าหมายที่ 1 -->
+            <a-entity gltf-model="./assets/model1.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        </a-marker>
+
+        <a-marker preset="custom" type="nft" url="./assets/target2">
+            <!-- โมเดลหรือภาพเคลื่อนไหว 3D สำหรับเป้าหมายที่ 2 -->
+            <a-entity gltf-model="./assets/model2.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        </a-marker>
+
+        <a-marker preset="custom" type="nft" url="./assets/target3">
+            <!-- โมเดลหรือภาพเคลื่อนไหว 3D สำหรับเป้าหมายที่ 3 -->
+            <a-entity gltf-model="./assets/model3.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        </a-marker>
+
+        <a-marker preset="custom" type="nft" url="./assets/target4">
+            <!-- โมเดลหรือภาพเคลื่อนไหว 3D สำหรับเป้าหมายที่ 4 -->
+            <a-entity gltf-model="./assets/model4.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        </a-marker>
+
+        <a-marker preset="custom" type="nft" url="./assets/target5">
+            <!-- โมเดลหรือภาพเคลื่อนไหว 3D สำหรับเป้าหมายที่ 5 -->
+            <a-entity gltf-model="./assets/model5.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        </a-marker>
+
+        <!-- กล้องสำหรับ AR -->
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>

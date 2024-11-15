@@ -1,0 +1,16 @@
+// server.js
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+app.use(express.json());
+
+app.post('/api/sticker', (req, res) => {
+  const stickerData = req.body;
+  console.log('Received sticker data:', stickerData);
+  res.status(200).send({ message: 'Sticker data received!' });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
